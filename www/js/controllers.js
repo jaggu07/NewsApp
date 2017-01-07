@@ -41,17 +41,16 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('PlaylistsCtrl', function($scope) {
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
-  ];
+  .controller('topNewsCtrl', function($scope,$http) {
+  $http.get("https://newsapi.org/v1/articles?source=the-hindu&sortBy=top&apiKey=850de99fe1d34a3ea6b92fb4e85c540b").then(function(topNews){
+    $scope.topNewslist = topNews.data.article;
+  })
 })
-
+.controller('latestNewsCtrl',function($scope,$http){
+  $http.get("https://newsapi.org/v1/articles?source=the-hindu&sortBy=latest&apiKey=850de99fe1d34a3ea6b92fb4e85c540b").then(function(latestNews){
+    $scope.latestNewslist = latestNews.data.article;
+  })
+})
 .controller('PlaylistCtrl', function($scope, $stateParams,$cordovaSocialSharing,$cordovaInAppBrowser,$cordovaAppVersion) {
   
 //Content sharing 

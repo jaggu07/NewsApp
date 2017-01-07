@@ -19,8 +19,8 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova'])
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
-    var isOnline = $cordovaNetwork.isOnline();
-    alert(isOnline);
+   // var isOnline = $cordovaNetwork.isOnline();
+  //  alert(isOnline);
   });
 
 })
@@ -52,25 +52,25 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova'])
         }
       }
     })
-    .state('app.playlists', {
-      url: '/playlists',
+    .state('app.latestNews', {
+      url: '/latestNews',
       views: {
         'menuContent': {
-          templateUrl: 'templates/playlists.html',
-          controller: 'PlaylistsCtrl'
+          templateUrl: 'templates/latestNews.html',
+          controller: 'latestNewsCtrl'
         }
       }
     })
 
-  .state('app.single', {
-    url: '/playlists/:playlistId',
+  .state('app.topNews', {
+    url: '/topNews',
     views: {
       'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
+        templateUrl: 'templates/topNews.html',
+        controller: 'topNewsCtrl'
       }
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
+  $urlRouterProvider.otherwise('/app/latestNews');
 });

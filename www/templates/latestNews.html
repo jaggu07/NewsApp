@@ -1,0 +1,18 @@
+<ion-view view-title="Latest News">
+  <ion-content>
+     <div class="list">
+      <div ng-repeat="latestNews in latestNewslist">
+    <a class="item item-thumbnail-left" href="#">
+      <img ng-src="{{latestNews.urlToImage}}">
+      <h2 ng-bind="latestNews.title"></h2>
+      <p ng-bind="latestNews.description"></p>
+    </a>
+    <div>
+  </div>
+    <ion-list>
+      <ion-item ng-repeat="playlist in playlists" href="#/app/playlists/{{playlist.id}}">
+        {{playlist.title}}
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

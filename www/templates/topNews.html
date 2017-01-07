@@ -1,0 +1,20 @@
+<ion-view view-title="Playlist">
+  <ion-content>
+    <h1>top News</h1>
+    <div class="list">
+      <div ng-repeat="topNews in topNewslist">
+    <a class="item item-thumbnail-left" href="#">
+      <img src="{{topNews.urlToImage}}">
+      <h2 ng-bind="topNews.title"></h2>
+      <p ng-bind="topNews.description"></p>
+    </a>
+    <div>
+  </div>
+
+
+
+        <!--<button class="button" ng-click="shareContent()">Share</button>
+    <button class="button" ng-click="openBrowser()">openBrowser</button>
+    <button class="button" ng-click="appVersion12()">appVersion</button> -->
+  </ion-content>
+</ion-view>
