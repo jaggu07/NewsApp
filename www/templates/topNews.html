@@ -1,11 +1,11 @@
-<ion-view view-title="Playlist">
+<ion-view view-title="Top News">
   <ion-content>
     <h1>top News</h1>
     <div class="list">
       <div ng-repeat="topNews in topNewslist">
     <a class="item item-thumbnail-left" href="#">
       <img src="{{topNews.urlToImage}}">
-      <h2 ng-bind="topNews.title"></h2>
+      <h2>{{topNews.title}}</h2>
       <p ng-bind="topNews.description"></p>
     </a>
     <div>
