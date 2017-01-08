@@ -35,15 +35,6 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova'])
     controller: 'AppCtrl'
   })
 
-  .state('app.search', {
-    url: '/search',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/search.html'
-      }
-    }
-  })
-
   .state('app.browse', {
       url: '/browse',
       views: {
@@ -61,6 +52,7 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova'])
         }
       }
     })
+    
 
   .state('app.topNews', {
     url: '/topNews',
@@ -70,7 +62,17 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova'])
         controller: 'topNewsCtrl'
       }
     }
-  });
+  })
+      .state('app.aboutUs', {
+      url: '/aboutUs',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/aboutUs.html',
+          controller: 'aboutUsCtrl'
+        }
+      }
+    });
+  
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/latestNews');
 });

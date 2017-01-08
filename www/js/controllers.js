@@ -40,20 +40,28 @@ angular.module('starter.controllers', [])
     }, 1000);
   };
 })
-
+//topNews
   .controller('topNewsCtrl', function($scope,$http) {
   $http.get("https://newsapi.org/v1/articles?source=the-hindu&sortBy=top&apiKey=850de99fe1d34a3ea6b92fb4e85c540b").then(function(topNews){
     $scope.topNewslist = topNews.data.articles;
   })
 })
+//latestNews
 .controller('latestNewsCtrl',function($scope,$http){
   $http.get("https://newsapi.org/v1/articles?source=the-hindu&sortBy=latest&apiKey=850de99fe1d34a3ea6b92fb4e85c540b").then(function(latestNews){
     $scope.latestNewslist = latestNews.data.articles;
   })
 })
-.controller('PlaylistCtrl', function($scope, $stateParams,$cordovaSocialSharing,$cordovaInAppBrowser,$cordovaAppVersion) {
-  
-//Content sharing 
+//App Version 
+.controller('aboutUsCtrl',function($scope,$cordovaAppVersion){
+ $scope.appVersion12=function(){
+    $cordovaAppVersion.getVersionNumber().then(function (version) {
+    $scope.appVersion = version;
+    });
+   }
+})
+//Content sharing
+.controller('PlaylistCtrl', function($scope, $stateParams,$cordovaSocialSharing,$cordovaInAppBrowser,$cordovaAppVersion) { 
   $scope.shareContent=function(){
   $cordovaSocialSharing.share('message', 'subject', "https://yt3.ggpht.com/-v0soe-ievYE/AAAAAAAAAAI/AAAAAAAAAAA/OixOH_h84Po/s900-c-k-no-mo-rj-c0xffffff/photo.jpg" , "http://www.googgle.com/") // Share via native share sheet
     .then(function(result) {
@@ -63,29 +71,20 @@ angular.module('starter.controllers', [])
     });
   }
 
+
   //In App Browser Opening
-   var options = {
+     var options = {
     location: 'yes',
     clearcache: 'no',
     toolbar: 'no'
   };
    $scope.openBrowser=function(){
-      $cordovaInAppBrowser.open('http://ngcordova.com', '_blank', options)
+      $cordovaInAppBrowser.open('http:ngcordova.com', '_blank', options)
       .then(function(event) {
-        // success
+         success
       })
       .catch(function(event) {
-        // error
+         error
       });
-
-   }
-
-   //App Version
-   
-   $scope.appVersion12=function(){
-    $cordovaAppVersion.getVersionNumber().then(function (version) {
-      var appVersion = version;
-      alert(appVersion);
-    });
-   }
-});
+    }
+})
