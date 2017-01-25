@@ -1,0 +1,16 @@
+<ion-view view-title="Description">
+  <ion-content>
+  <div class="list" >
+      <div ng-repeat="latestNews in latestNewslist" class="item item-text-wrap" >
+      <img ng-src="{{latestNews.urlToImage}}" style=" width:100%; height: 50%;">
+      <h1 class="title" ng-bind="latestNews.title"></h1>
+      <h3 ng-bind="latestNews.description"></h3><br>
+      <p>BY: {{latestNews.author}} &nbsp;&nbsp;{{latestNews.publishedAt}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button class="button-right button-icon ion-android-more-horizontal" ng-click="openBrowser(latestNews.url)"></button>
+    <button class="button-icon ion-android-share-alt" ng-click="shareContent(latestNews.urlToImage,latestNews.title,latestNews.description)"></button></p>
+    <div>
+  </div>
+    <div>
+    </div>
+  </ion-content>
+</ion-view>

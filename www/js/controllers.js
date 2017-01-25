@@ -45,23 +45,38 @@ angular.module('starter.controllers', [])
   $http.get("https://newsapi.org/v1/articles?source=the-hindu&sortBy=top&apiKey=850de99fe1d34a3ea6b92fb4e85c540b").then(function(topNews){
     $scope.topNewslist = topNews.data.articles;
   })
-    //Content sharing
-  $scope.shareContent=function(news){
-    alert()
-  $cordovaSocialSharing.share('message', 'subject',"https://newsapi.org/v1/articles?source=the-hindu&sortBy=top&apiKey=850de99fe1d34a3ea6b92fb4e85c540b","news") // Share via native share sheet
+   
+
+})
+//latestNews
+.controller('latestNewsCtrl',function($scope,$http,$cordovaInAppBrowser,$cordovaSocialSharing, $stateParams){
+  $http.get("https://newsapi.org/v1/articles?source=the-hindu&sortBy=latest&apiKey=850de99fe1d34a3ea6b92fb4e85c540b").then(function(latestNews){
+    $scope.latestNewslist = latestNews.data.articles;
+  })
+  //In App Browser Opening
+     var options = {
+    location: 'yes',
+    clearcache: 'no',
+    toolbar: 'no'
+  };
+   $scope.openBrowser=function(url){
+      $cordovaInAppBrowser.open(url, '_blank', options)
+      .then(function(event) {
+         success
+      })
+      .catch(function(event) {
+         error
+      });
+    }
+       //Content sharing
+  $scope.shareContent=function(newsImage, title, description){
+  $cordovaSocialSharing.share(title, 'subject',newsImage,description) // Share via native share sheet
     .then(function(result) {
       // Success!
     }, function(err) {
       // An error occured. Show a message to the user
     });
   }
-
-})
-//latestNews
-.controller('latestNewsCtrl',function($scope,$http){
-  $http.get("https://newsapi.org/v1/articles?source=the-hindu&sortBy=latest&apiKey=850de99fe1d34a3ea6b92fb4e85c540b").then(function(latestNews){
-    $scope.latestNewslist = latestNews.data.articles;
-  })
 })
 //App Version 
 .controller('aboutUsCtrl',function($scope,$cordovaAppVersion){
@@ -72,32 +87,3 @@ angular.module('starter.controllers', [])
    }
 })
 
-.controller('PlaylistCtrl', function($scope, $stateParams,$cordovaSocialSharing,$cordovaInAppBrowser,$cordovaAppVersion) { 
-  //Content sharing
-  $scope.shareContent=function(){
-    alert("entered")
-  $cordovaSocialSharing.share('message', 'subject', "https://yt3.ggpht.com/-v0soe-ievYE/AAAAAAAAAAI/AAAAAAAAAAA/OixOH_h84Po/s900-c-k-no-mo-rj-c0xffffff/photo.jpg" , "http://www.googgle.com/") // Share via native share sheet
-    .then(function(result) {
-      // Success!
-    }, function(err) {
-      // An error occured. Show a message to the user
-    });
-  }
-
-
-  //In App Browser Opening
-     var options = {
-    location: 'yes',
-    clearcache: 'no',
-    toolbar: 'no'
-  };
-   $scope.openBrowser=function(){
-      $cordovaInAppBrowser.open('http:ngcordova.com', '_blank', options)
-      .then(function(event) {
-         success
-      })
-      .catch(function(event) {
-         error
-      });
-    }
-})

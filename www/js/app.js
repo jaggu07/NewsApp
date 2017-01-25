@@ -35,16 +35,17 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova'])
     controller: 'AppCtrl'
   })
 
-  .state('app.browse', {
-      url: '/browse',
+  .state('app.content', {
+      url: '/content',
       views: {
         'menuContent': {
-          templateUrl: 'templates/browse.html'
+          templateUrl: 'templates/content.html',
+          controller: 'latestNewsCtrl'
         }
       }
     })
     .state('app.latestNews', {
-      url: '/latestNews',
+      url: '/latestNews', 
       views: {
         'menuContent': {
           templateUrl: 'templates/latestNews.html',

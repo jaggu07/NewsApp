@@ -1,8 +1,8 @@
 <ion-view view-title="Latest News">
-  <ion-content>
+  <ion-content class="item item-text-wrap">
      <div class="list">
       <div ng-repeat="latestNews in latestNewslist">
-    <a class="item item-thumbnail-left" href="content.html">
+    <a class="item item-thumbnail-left" href="#/app/content">
       <img ng-src="{{latestNews.urlToImage}}">
       <h2 ng-bind="latestNews.title"></h2>
       <p ng-bind="latestNews.description"></p>
