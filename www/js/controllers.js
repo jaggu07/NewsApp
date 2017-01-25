@@ -41,10 +41,21 @@ angular.module('starter.controllers', [])
   };
 })
 //topNews
-  .controller('topNewsCtrl', function($scope,$http) {
+  .controller('topNewsCtrl', function($scope,$http,$cordovaSocialSharing) {
   $http.get("https://newsapi.org/v1/articles?source=the-hindu&sortBy=top&apiKey=850de99fe1d34a3ea6b92fb4e85c540b").then(function(topNews){
     $scope.topNewslist = topNews.data.articles;
   })
+    //Content sharing
+  $scope.shareContent=function(news){
+    alert()
+  $cordovaSocialSharing.share('message', 'subject',"https://newsapi.org/v1/articles?source=the-hindu&sortBy=top&apiKey=850de99fe1d34a3ea6b92fb4e85c540b","news") // Share via native share sheet
+    .then(function(result) {
+      // Success!
+    }, function(err) {
+      // An error occured. Show a message to the user
+    });
+  }
+
 })
 //latestNews
 .controller('latestNewsCtrl',function($scope,$http){
@@ -60,9 +71,11 @@ angular.module('starter.controllers', [])
     });
    }
 })
-//Content sharing
+
 .controller('PlaylistCtrl', function($scope, $stateParams,$cordovaSocialSharing,$cordovaInAppBrowser,$cordovaAppVersion) { 
+  //Content sharing
   $scope.shareContent=function(){
+    alert("entered")
   $cordovaSocialSharing.share('message', 'subject', "https://yt3.ggpht.com/-v0soe-ievYE/AAAAAAAAAAI/AAAAAAAAAAA/OixOH_h84Po/s900-c-k-no-mo-rj-c0xffffff/photo.jpg" , "http://www.googgle.com/") // Share via native share sheet
     .then(function(result) {
       // Success!
